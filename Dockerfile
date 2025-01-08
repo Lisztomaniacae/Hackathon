@@ -6,6 +6,7 @@ FROM python:3.12
 # Install OpenCV and its dependencies
 RUN apt-get update && apt-get -yq install python3-opencv
 
+
 # Add the current directory (the solution) to the container
 RUN mkdir /app
 WORKDIR /app
@@ -15,5 +16,7 @@ COPY . .
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip install --no-cache-dir -r requirements.txt
 
+RUN chmod +x /app/solution/main.py
+
 # Run the evaluation script if nothing else is specified
-CMD ["python", "evaluate/eval.py"]
+CMD ["python3", "evaluate/eval.py"]

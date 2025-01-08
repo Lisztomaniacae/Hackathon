@@ -6,7 +6,6 @@ import pandas as pd
 import numpy as np
 import cvzone
 import cv2
-import numpy as np
 
 
 def overlay_gripper_on_part(gripper_image, part_image, x, y, angle):
@@ -204,7 +203,7 @@ def main():
     # Write the updated DataFrame back to the output file
     outputs.to_csv(output_file, index=False)
 
-    print(f"Average score: {outputs["score"].mean()}")
+    print(f"Average score: {outputs['score'].mean()}")
 
 
 if __name__ == "__main__":

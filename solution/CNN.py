@@ -210,14 +210,10 @@ def init():
     directory = Path(__file__).parent.parent
     model = ConvolutionalNeuralNet()
     # Load the saved state dict into the model
-    model.load_state_dict(torch.load(directory / 'doc/cnn.pth'))
+    model.load_state_dict(torch.load(directory / 'doc/cnn.pth', map_location="cpu"))
 
     # Move the model to the appropriate device
-    device = torch.device(
-        "cuda" if torch.cuda.is_available()
-        else "mps" if torch.backends.mps.is_available()
-        else "cpu"
-    )
+    device = torch.device("cpu")
     model.to(device)
     model.eval()  # Set the model to evaluation mode
     return model
